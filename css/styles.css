@@ -42,3 +42,13 @@
 .gallery__link:hover {
   cursor: zoom-in;
 }
+
+.basicLightbox.basicLightbox--img.basicLightbox--visible{
+ position: absolute;
+ top: 0;
+ left: 0;
+ background: rgba(0, 0, 0, .8);
+ z-index: 1000;
+ transition-duration: 0.4s;
+ transition-timing-function: ease;
+}
