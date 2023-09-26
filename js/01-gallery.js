@@ -5,6 +5,7 @@ console.log(galleryItems);
 
 const gallery = document.querySelector('.gallery');
 
+
 const markup = galleryItems.map(item =>
     `<li class="gallery__item">
     <a class="gallery__link" href="${item.original}">
@@ -20,10 +21,25 @@ gallery.insertAdjacentHTML('afterbegin', markup);
 gallery.addEventListener('click', selectImage);
 function selectImage(event) {
     event.preventDefault();
-    const instance = basicLightbox.create(`
-    <img src="${event.target.dataset.source}">
-`)
-    instance.show();
     
-    // instance.close();
+    if(event.target === event.currentTarget){   
+            return;
+    }
+    
+    const instance = basicLightbox.create(`
+    <img src="${event.target.dataset.source}">`);
+
+    instance.show(); 
+
+    if(instance.visible()){
+        document.addEventListener('keydown', closeModal);
+    }
+   
+    function closeModal(event){
+        if (event.key === "Escape"){
+            instance.close();
+            document.removeEventListener('keydown', closeModal);
+        }
+    }
+    
 }
