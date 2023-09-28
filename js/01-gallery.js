@@ -29,7 +29,6 @@ function selectImage(event) {
 
     instance.show(); 
     document.addEventListener('keydown', closeModal);
-    
     function closeModal(event){
         if (event.key === "Escape"){
             instance.close();
